@@ -1,0 +1,341 @@
+/* ============================================================
+   Global Flux Culture — colors & type tokens
+   ------------------------------------------------------------
+   Single source of truth. Import this from anything:
+     <link rel="stylesheet" href="../colors_and_type.css">
+   or
+     @import url('./colors_and_type.css');
+   ============================================================ */
+
+/* Manrope substitutes for SpotifyMixUI/CircularSp.
+   Big Shoulders Display substitutes for Canva 'Horizon' on the brand wordmark.
+   Replace with real .woff2 in fonts/ to remove substitutions. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Big+Shoulders+Display:wght@700;800;900&display=swap');
+
+:root {
+  /* ---------- Brand ---------- */
+  --gfc-green:        #1ed760;   /* primary functional accent */
+  --gfc-green-hover:  #1fdf64;
+  --gfc-green-border: #1db954;
+  --gfc-lime:         #c5d83f;   /* secondary brand highlight */
+  --gfc-lime-hover:   #d4e85a;
+  --gfc-lime-soft:    rgba(197,216,63,0.14);
+
+  /* ---------- Surfaces (dark theater) ---------- */
+  --bg-base:          #121212;   /* deepest layer */
+  --bg-surface:       #181818;   /* cards, sidebar */
+  --bg-elevated:      #1f1f1f;   /* button bg, hover surface */
+  --bg-card-alt:      #252525;   /* alternate card */
+  --bg-card-alt-2:    #272727;
+  --bg-scrim:         rgba(0,0,0,0.6);
+  --bg-light:         #eeeeee;   /* rare light-mode CTA */
+
+  /* ---------- Text ---------- */
+  --text-primary:     #ffffff;
+  --text-bright:      #fdfdfd;
+  --text-near-white:  #cbcbcb;
+  --text-secondary:   #b3b3b3;
+  --text-muted:       #7c7c7c;
+  --text-disabled:    #4d4d4d;
+  --text-on-green:    #000000;
+
+  /* ---------- Semantic ---------- */
+  --text-negative:    #f3727f;
+  --text-warning:     #ffa42b;
+  --text-announce:    #539df5;
+
+  /* ---------- Borders ---------- */
+  --border-dark:      #4d4d4d;
+  --border-mid:       #7c7c7c;
+  --border-separator: #b3b3b3;
+
+  /* ---------- Shadows ---------- */
+  --shadow-card:      rgba(0,0,0,0.3) 0px 8px 8px;
+  --shadow-dialog:    rgba(0,0,0,0.5) 0px 8px 24px;
+  --shadow-input:     rgb(18,18,18) 0px 1px 0px, rgb(124,124,124) 0px 0px 0px 1px inset;
+
+  /* ---------- Radii ---------- */
+  --radius-xs:        2px;
+  --radius-sm:        4px;
+  --radius-md:        6px;
+  --radius-lg:        8px;
+  --radius-xl:        12px;
+  --radius-2xl:       20px;
+  --radius-pill:      500px;
+  --radius-full:      9999px;
+  --radius-circle:    50%;
+
+  /* ---------- Spacing (8px base, w/ inline rhythm stops) ---------- */
+  --space-px:         1px;
+  --space-0-5:        2px;
+  --space-1:          4px;
+  --space-1-5:        6px;
+  --space-2:          8px;
+  --space-3:          12px;
+  --space-4:          16px;
+  --space-5:          20px;
+  --space-6:          24px;
+  --space-8:          32px;
+  --space-10:         40px;
+  --space-12:         48px;
+  --space-16:         64px;
+  --space-20:         80px;
+
+  /* ---------- Motion ---------- */
+  --ease-out:         cubic-bezier(0.3, 0, 0.2, 1);
+  --ease-in-out:      cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-quick:        120ms;
+  --dur-base:         200ms;
+  --dur-panel:        400ms;
+
+  /* ---------- Type families ---------- */
+  --font-title:
+    'Manrope',
+    'SpotifyMixUITitle', 'CircularSp-Arab', 'CircularSp-Hebr',
+    'CircularSp-Cyrl', 'CircularSp-Grek', 'CircularSp-Deva',
+    'Helvetica Neue', helvetica, arial,
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'MS Gothic',
+    sans-serif;
+  --font-ui:
+    'Manrope',
+    'SpotifyMixUI', 'CircularSp-Arab', 'CircularSp-Hebr',
+    'CircularSp-Cyrl', 'CircularSp-Grek', 'CircularSp-Deva',
+    'Helvetica Neue', helvetica, arial,
+    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'MS Gothic',
+    sans-serif;
+  --font-mono:
+    'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  --font-display:
+    'Horizon',
+    'Big Shoulders Display',
+    'Anton', 'Archivo Black',
+    'Helvetica Neue', helvetica, arial, sans-serif;
+
+  /* ---------- Type scale ---------- */
+  --fs-section-title:   24px;
+  --fs-feature:         18px;
+  --fs-body:            16px;
+  --fs-button:          14px;
+  --fs-caption:         14px;
+  --fs-small:           12px;
+  --fs-badge:           10.5px;
+  --fs-micro:           10px;
+
+  --lh-tight:           1.0;
+  --lh-snug:            1.30;
+  --lh-base:            1.50;
+  --lh-relaxed:         1.54;
+
+  --tracking-button:    1.4px;
+  --tracking-button-lg: 2px;
+}
+
+/* ============================================================
+   Semantic element styles
+   ============================================================ */
+html, body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+h1, .h1 {
+  font-family: var(--font-title);
+  font-size: var(--fs-section-title);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+h2, .h2 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-feature);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+h3, .h3 {
+  font-family: var(--font-ui);
+  font-size: var(--fs-body);
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-negative  { color: var(--text-negative); }
+.text-warning   { color: var(--text-warning); }
+.text-announce  { color: var(--text-announce); }
+
+.caption     { font-size: var(--fs-caption); color: var(--text-secondary); }
+.caption-bold{ font-size: var(--fs-caption); font-weight: 700; line-height: var(--lh-base); }
+.small       { font-size: var(--fs-small); }
+.small-bold  { font-size: var(--fs-small); font-weight: 700; line-height: var(--lh-base); }
+.badge {
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  line-height: 1.33;
+  text-transform: capitalize;
+}
+.micro       { font-size: var(--fs-micro); }
+
+.uppercase-label {
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  font-weight: 700;
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+}
+
+/* Brand wordmark — Horizon (or Big Shoulders Display substitute) */
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-quick) var(--ease-out);
+}
+a:hover { color: var(--text-primary); }
+
+::selection {
+  background: var(--gfc-green);
+  color: var(--text-on-green);
+}
+
+/* ============================================================
+   Reusable component primitives
+   ============================================================ */
+
+/* Pill button — primary green */
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  background: var(--gfc-green);
+  color: var(--text-on-green);
+  font-family: var(--font-ui);
+  font-size: var(--fs-button);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  padding: 12px 32px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--dur-quick) var(--ease-out),
+              background var(--dur-quick) var(--ease-out);
+}
+.btn-green:hover  { background: var(--gfc-green-hover); transform: scale(1.04); }
+.btn-green:active { transform: scale(0.98); }
+
+/* Dark pill — secondary */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--fs-button);
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--dur-quick) var(--ease-out);
+}
+.btn-dark:hover { background: var(--bg-card-alt); }
+
+/* Outlined pill */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--fs-button);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-button);
+  padding: 8px 24px;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: border-color var(--dur-quick) var(--ease-out),
+              transform var(--dur-quick) var(--ease-out);
+}
+.btn-outline:hover { border-color: var(--text-primary); transform: scale(1.04); }
+
+/* Circular play button */
+.btn-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--gfc-green);
+  color: var(--text-on-green);
+  border: none;
+  border-radius: var(--radius-circle);
+  cursor: pointer;
+  transition: transform var(--dur-quick) var(--ease-out),
+              background var(--dur-quick) var(--ease-out);
+  box-shadow: var(--shadow-card);
+}
+.btn-play:hover  { background: var(--gfc-green-hover); transform: scale(1.06); }
+.btn-play:active { transform: scale(0.96); }
+
+/* Card */
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  transition: background var(--dur-base) var(--ease-out);
+}
+.card:hover { background: var(--bg-elevated); }
+
+/* Input — signature inset border */
+.input {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--fs-button);
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-input);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input::placeholder { color: var(--text-secondary); }
+.input:focus { box-shadow: rgb(18,18,18) 0px 1px 0px, var(--text-primary) 0px 0px 0px 1px inset; }

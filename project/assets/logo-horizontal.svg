@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" font-family="&#39;Big Shoulders Display&#39;,&#39;Anton&#39;,&#39;Archivo Black&#39;,sans-serif">
+  <rect width="320" height="100" fill="#000"></rect>
+  <text x="20" y="46" font-weight="900" font-size="38" fill="#ffffff" letter-spacing="1.5">GFLX</text>
+  <text x="120" y="46" font-weight="900" font-size="38" fill="#c5d83f" letter-spacing="2.4">CULT</text>
+  <text x="20" y="74" font-family="Manrope,Helvetica,sans-serif" font-weight="700" font-size="10" fill="#ffffff" letter-spacing="2.4">SOUND ARCHIVES</text>
+  <line x1="20" y1="82" x2="220" y2="82" stroke="#c5d83f" stroke-width="1"></line>
+</svg>
