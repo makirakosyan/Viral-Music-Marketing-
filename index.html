@@ -1422,6 +1422,275 @@ img, video { display: block; max-width: 100%; }
 }
 
 /* ============================================================
+   Participation Formats grid
+   ============================================================ */
+.formats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.format-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-2xl);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.format-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(197,216,63,0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+.format-card:hover { border-color: rgba(197,216,63,0.3); transform: translateY(-4px); }
+.format-card:hover::before { opacity: 1; }
+.format-num {
+  font-family: var(--font-title);
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgba(197,216,63,0.15);
+  position: absolute;
+  top: 24px; right: 28px;
+}
+.format-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: rgba(197,216,63,0.1);
+  border: 1px solid rgba(197,216,63,0.22);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gfc-lime);
+  width: fit-content;
+}
+.format-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+.format-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+  flex: 1;
+}
+.format-signal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gfc-lime);
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.signal-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gfc-lime);
+  flex-shrink: 0;
+  animation: pulse 2s ease-out infinite;
+}
+.core-insight {
+  background: linear-gradient(135deg, rgba(197,216,63,0.08) 0%, rgba(197,216,63,0.03) 100%);
+  border: 1px solid rgba(197,216,63,0.2);
+  border-radius: var(--radius-2xl);
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ci-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gfc-lime);
+}
+.ci-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-near-white);
+  margin: 0;
+  font-weight: 500;
+  max-width: 760px;
+}
+.ci-text em { font-style: italic; color: var(--gfc-lime); font-weight: 500; }
+@media (max-width: 1100px) { .formats-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   Mock Campaigns v2
+   ============================================================ */
+.mocks-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 40px;
+}
+.mocks-sub {
+  max-width: 400px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.mock-v2 {
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 0;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: border-color 0.3s var(--ease-out);
+}
+.mock-v2:hover { border-color: rgba(197,216,63,0.25); }
+.mock-v2-image {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+.mock-v2-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 1.2s var(--ease-out);
+}
+.mock-v2:hover .mock-v2-image img { transform: scale(1.04); }
+.mock-v2-num {
+  position: absolute;
+  top: 24px; left: 24px;
+  font-family: var(--font-title);
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--gfc-lime);
+  text-shadow: 0 4px 24px rgba(0,0,0,0.7);
+  z-index: 2;
+}
+.mock-v2-badge {
+  position: absolute;
+  top: 28px; right: 20px;
+  background: rgba(18,18,18,0.85);
+  backdrop-filter: blur(10px);
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.1);
+  z-index: 2;
+}
+.mock-v2-body {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.mock-v2-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.mv2-artist { color: var(--text-primary); }
+.mv2-sep { color: var(--text-muted); }
+.mv2-concept { color: var(--gfc-lime); }
+.mock-v2-heading {
+  font-family: var(--font-title);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: balance;
+}
+.mock-v2-heading em { font-style: italic; font-weight: 500; color: var(--gfc-lime); }
+.mock-v2-exec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.mv2-exec-item {
+  padding: 16px 18px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mv2-exec-h {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gfc-lime);
+}
+.mv2-exec-t {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-near-white);
+  margin: 0;
+}
+.mock-v2-why {
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mv2-why-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gfc-lime);
+}
+.mv2-why-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-near-white);
+  margin: 0;
+}
+@media (max-width: 1100px) {
+  .mock-v2 { grid-template-columns: 1fr; }
+  .mock-v2-image { min-height: 320px; }
+  .mock-v2-body { padding: 32px; }
+  .mocks-head { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 720px) {
+  .mock-v2-exec { grid-template-columns: 1fr; }
+  .mock-v2-body { padding: 24px; }
+}
+
+/* ============================================================
    Video spotlight grid (the 4 video examples)
    ============================================================ */
 .spotlight-head {
@@ -2643,10 +2912,10 @@ function Nav() {
       <div className="nav-links">
         <a href="#about">About</a>
         <a href="#spotlights">Video Reel</a>
-        <a href="#artists">UMG Artists</a>
-        <a href="#cases">Case Studies</a>
         <a href="#trends">Trends</a>
-        <a href="#mocks">Mock Ideas</a>
+        <a href="#artists">Artists</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#mocks">Mock Campaigns</a>
       </div>
       <div className="nav-right">
         <div className="availability">
@@ -3222,126 +3491,56 @@ function VideoSpotlights() {
 
 function Trends() {
   const ref = useReveal();
-  const [iv, inView] = useInView(0.2);
-
-  const regions = [
-    { name: 'LATAM', pct: 84 },
-    { name: 'APAC', pct: 76 },
-    { name: 'Europe', pct: 58 },
-    { name: 'North America', pct: 71 },
-    { name: 'Australia', pct: 79 },
-  ];
-
   return (
     <section className="section" id="trends" ref={ref}>
       <div className="container">
         <div className="section-head reveal">
           <div className="section-head-stack">
-            <span className="section-eyebrow"><span className="square"></span>Viral Music Trends · Field Notes</span>
-            <h2 className="section-title">How songs <span className="accent">actually</span> travel now.</h2>
+            <span className="section-eyebrow"><span className="square"></span>02 — Emerging Trends</span>
+            <h2 className="section-title">Viral culture &amp; <span className="accent">participation mechanics.</span></h2>
           </div>
-          <p className="section-subtitle">Music spreads most effectively when it becomes a format for participation, not just audio. Below: the snapshot dashboard, followed by four moments I keep coming back to — with the clip itself.</p>
+          <p className="section-subtitle">Music spreads most effectively when it becomes a format for participation — not just audio content.</p>
         </div>
-
-        {/* dashboard */}
-        <div className="trends-grid reveal" ref={iv}>
-          <div className="trend-card t-big">
-            <div className="kicker">— How Songs Travel 2024–2026</div>
-            <h3>The 14-second chorus is now <span className="lime">the entire campaign.</span></h3>
-            <p className="blurb">
-              The audio snippet — not the full track, not the music video — is the single
-              highest-correlation signal I see for week-one streaming behaviour. The rollout
-              now starts with <em>snippet, hook, full track</em> as three discrete assets,
-              each with its own creator seeding plan.
-            </p>
-            <div className="region-list">
-              {regions.map((r, i) => (
-                <div key={r.name} className="region-row">
-                  <span className="name">{r.name}</span>
-                  <div className="bar-bg">
-                    <div
-                      className="bar-fill"
-                      style={{ width: inView ? `${r.pct}%` : '0%', transitionDelay: `${0.2 + i * 0.1}s` }}
-                    />
-                  </div>
-                  <span className="v">{r.pct}%</span>
-                </div>
-              ))}
-            </div>
-            <div style={{fontSize: 11, color: 'var(--text-muted)', letterSpacing: '0.04em'}}>% of recent campaigns where snippet-first creator seeding drove the streaming lift · per region</div>
-          </div>
-
-          <div className="trend-card">
-            <div className="kicker">— Cross-platform participation</div>
-            <h4>TikTok is no longer the only feed.</h4>
-            <p className="blurb" style={{marginBottom: 16}}>Where the participation mechanics tend to land, observed across recent rollouts.</p>
-            <div className="platform-grid">
-              <div className="platform-tile">
-                <div className="p-name">TikTok</div>
-                <div className="p-val">Primary <span className="p-trend">snippet seed</span></div>
-              </div>
-              <div className="platform-tile">
-                <div className="p-name">Reels</div>
-                <div className="p-val">Secondary <span className="p-trend">scale</span></div>
-              </div>
-              <div className="platform-tile">
-                <div className="p-name">Shorts</div>
-                <div className="p-val">Catalog <span className="p-trend">discovery</span></div>
-              </div>
-              <div className="platform-tile" style={{background: 'rgba(197,216,63,0.08)', borderColor: 'rgba(197,216,63,0.25)'}}>
-                <div className="p-name" style={{color: 'var(--gfc-lime)'}}>Editorial DSPs</div>
-                <div className="p-val" style={{color: 'var(--gfc-lime)'}}>Lagging signal</div>
+        <div className="formats-grid reveal">
+          {[
+            {
+              n: '01',
+              tag: 'Humour-driven',
+              title: 'Meme &amp; inside-joke formats',
+              body: 'Creators adapt an existing format — shouting relatable lyrics, acting out scenes, "I\'m passing the phone to someone who…" Each iteration feels original while being structurally identical.',
+              signal: 'Low barrier → high creator volume',
+            },
+            {
+              n: '02',
+              tag: 'Fashion / Lifestyle',
+              title: 'Outfit of the day as soundtrack',
+              body: 'Day-in-the-life and OOTD content layered with a song as cultural soundtrack. The artist isn\'t the subject — the song becomes part of the creator\'s identity.',
+              signal: 'Passive discovery → active association',
+            },
+            {
+              n: '03',
+              tag: 'Nostalgia-driven',
+              title: 'Memory as re-engagement engine',
+              body: '"2026 is the new 2016" — Tumblr-era visuals with Blue Neighbourhood as the sound. Memory-based participation reconnects older fans and introduces younger ones through shared cultural shorthand.',
+              signal: 'Re-engagement + new audience crossover',
+            },
+          ].map((f, i) => (
+            <div className="format-card reveal" key={i} style={{animationDelay: `${i * 0.15}s`}}>
+              <div className="format-num">{f.n}</div>
+              <div className="format-tag">{f.tag}</div>
+              <h3 className="format-title" dangerouslySetInnerHTML={{__html: f.title}} />
+              <p className="format-body">{f.body}</p>
+              <div className="format-signal">
+                <span className="signal-dot"></span>
+                {f.signal}
               </div>
             </div>
-          </div>
-
-          <div className="trend-card t-lime">
-            <div className="kicker">— Editorial Half-life</div>
-            <div className="num">72<span className="unit">h</span></div>
-            <h4 style={{marginTop: 12}}>The window for an editorial flip is now three days.</h4>
-            <p className="blurb">From DSP add to chart-relevant stream count, the playlist pitch, press hit, and creator wave all live inside one 72-hour block.</p>
-          </div>
-
-          <div className="trend-card">
-            <div className="kicker">— Cross-language lift</div>
-            <h4>Bilingual snippets out-perform English-only in <span style={{color: 'var(--gfc-lime)'}}>non-English markets.</span></h4>
-            <p className="blurb">A pattern observed across Mexican, Korean, and Brazilian rollouts. The chorus hook is the lift; the verse language is the permission slip.</p>
-            <div style={{marginTop: 20, display: 'flex', gap: 6}}>
-              {[40, 65, 35, 80, 55, 95, 70].map((h, i) => (
-                <div
-                  key={i}
-                  style={{
-                    flex: 1,
-                    height: 60,
-                    background: i % 2 === 0 ? 'var(--gfc-lime)' : 'rgba(255,255,255,0.08)',
-                    borderRadius: 4,
-                    transform: inView ? `scaleY(${h/100})` : 'scaleY(0.1)',
-                    transformOrigin: 'bottom',
-                    transition: `transform 1.2s var(--ease-out) ${0.3 + i * 0.08}s`
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="trend-card">
-            <div className="kicker">— What I'm watching</div>
-            <h4>Three participation formats driving the most organic spread.</h4>
-            <ul style={{padding: 0, listStyle: 'none', margin: '16px 0 0', display: 'flex', flexDirection: 'column', gap: 12}}>
-              {[
-                { n: '01', t: 'Humour-driven: meme and "inside joke" content where each creator adapts an existing format — shouting relatable lyrics, acting out scenes, "I\'m passing the phone to someone who…"' },
-                { n: '02', t: 'Fashion/lifestyle-driven: outfit-of-the-day and day-in-the-life content layered with a song as a cultural soundtrack.' },
-                { n: '03', t: 'Nostalgia-driven: memory-based participation drives re-engagement — "2026 is the new 2016" with Tumblr-era visuals and Blue Neighbourhood as the sound.' },
-              ].map((it) => (
-                <li key={it.n} style={{display: 'flex', gap: 14, alignItems: 'flex-start'}}>
-                  <span style={{fontFamily: 'var(--font-title)', fontSize: 14, fontWeight: 800, color: 'var(--gfc-lime)', minWidth: 24}}>{it.n}</span>
-                  <span style={{fontSize: 13, color: 'var(--text-near-white)', lineHeight: 1.5}}>{it.t}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
         </div>
-
+        <div className="core-insight reveal">
+          <span className="ci-label">Core insight</span>
+          <p className="ci-text">Through social media interaction and participation in trends, audiences feel <em>part of the artist's musical journey</em> — "in on it." Humour humanises artists and builds familiarity, which translates into loyalty.</p>
+        </div>
       </div>
     </section>
   );
@@ -3352,133 +3551,93 @@ function Trends() {
    ============================================================ */
 function Mocks() {
   const ref = useReveal();
+  const campaigns = [
+    {
+      n: '01', tag: 'Australian Market Entry', artist: 'Cortis',
+      concept: '"Familiarity Through Culture"',
+      img: R('mockCortis', 'project/assets/cortis-campaign.webp'),
+      heading: <>Introduce Cortis to Australia by <em>embedding them inside existing cultural touchpoints</em> — not formal promotion.</>,
+      exec: [
+        { h: 'Execution · 01', t: 'Short-form cover or remix-style content of a well-known Australian pop track (e.g. 5SOS "She Looks So Perfect").' },
+        { h: 'Execution · 02', t: 'Casual TikTok-style vlog at a recognisable Sydney location (e.g. Luna Park).' },
+        { h: 'Execution · 03', t: 'Reactive content using existing viral audio or local trends.' },
+        { h: 'Execution · 04', t: 'Collab-style TikToks with Australian artists or creators using their songs in natural, non-promotional settings.' },
+      ],
+      why: 'Uses familiarity to reduce the "foreign artist" barrier, makes discovery feel organic, not planned — and builds early emotional recognition through culture, not marketing.',
+    },
+    {
+      n: '02', tag: 'Album Rollout System', artist: 'Jessica Mauboy',
+      concept: '"Private Access as Marketing"',
+      img: R('mockJessica', 'project/assets/jessica-mauboy.webp'),
+      heading: <>A rollout built around <em>controlled intimacy</em> and creator-led discovery.</>,
+      exec: [
+        { h: 'Execution · 01', t: 'Close Friends list used as a soft "inner circle" for early snippets.' },
+        { h: 'Execution · 02', t: 'Short voice memo or raw vocal previews released first.' },
+        { h: 'Execution · 03', t: 'Fan accounts organically repost screen recordings and reactions.' },
+        { h: 'Execution · 04', t: 'Selected creators receive physical PR packages — minimal branding, emotionally driven objects like phone charms or wearable pieces.' },
+      ],
+      why: 'Feels exclusive without being inaccessible. Encourages fan-led distribution — leaks become intentional marketing moments. Turns physical PR into content creation triggers.',
+    },
+    {
+      n: '03', tag: 'Real-Time Audience-Led Rollout', artist: 'The Fan Feedback Loop',
+      concept: '"Watch what sticks, then scale it"',
+      img: R('mockLoop', 'project/assets/mock-graph.webp'),
+      heading: <>A structured system where <em>fan behaviour directly shapes</em> campaign direction during rollout.</>,
+      exec: [
+        { h: 'Stage 01 — Seeding', t: 'Release 3–5 contrasting song snippets, each framed with different moods or visuals.' },
+        { h: 'Stage 02 — Observation', t: 'Micro-creators get early access via Close Friends. No briefing — only freedom to react.' },
+        { h: 'Stage 03 — Tracking', t: 'Monitor most-used audio, organic vs forced adoption, dominant emotional response, visual styles fans replicate.' },
+        { h: 'Stage 04 — Adaptive Rollout', t: 'Most engaged snippet becomes lead single. Fan-made aesthetics inform official visual direction.' },
+      ],
+      why: "Fans shape meaning through use. Engagement becomes emotional ownership. Campaigns evolve with real audience behaviour — don't predict what will work, watch what people already choose, then scale it.",
+    },
+  ];
   return (
     <section className="section" id="mocks" ref={ref}>
       <div className="container">
-        <div className="section-head reveal">
-          <div className="section-head-stack">
+        <div className="mocks-head reveal">
+          <div>
             <span className="section-eyebrow"><span className="square"></span>Mock Strategy Ideas</span>
-            <h2 className="section-title">Three campaigns I'd love to <span className="accent">actually run.</span></h2>
+            <h2 className="section-title">Three mock <span className="accent">campaign ideas.</span></h2>
           </div>
-          <p className="section-subtitle">Speculative work — built on the same principles: start with community, release multiple directions early, treat creators as distribution, and design for participation over passive viewing.</p>
+          <p className="mocks-sub">Speculative work — built on the same principles: start with community, release multiple directions early, treat creators as distribution, and design for participation over passive viewing.</p>
         </div>
-
-        <div className="mock-list">
-
-          {/* MOCK 1 — CORTIS */}
-          <article className="mock-card reveal">
-            <div className="visual">
-              <span className="index">01</span>
-              <span className="tag">Australian Market Entry</span>
-              <ImgSlot id="mockCortis" src="project/assets/cortis-campaign.webp" placeholder="Cortis campaign visual" />
+        {campaigns.map((c, i) => (
+          <article className="mock-v2 reveal" key={i}>
+            <div className="mock-v2-image">
+              <span className="mock-v2-num">{c.n}</span>
+              <span className="mock-v2-badge">{c.tag}</span>
+              <img src={c.img} alt={c.artist} />
             </div>
-            <div className="body">
-              <div className="meta-row">
-                <span>Cortis</span>
-                <span className="sep"></span>
-                <span className="concept">Concept · "Familiarity through culture"</span>
+            <div className="mock-v2-body">
+              <div className="mock-v2-meta">
+                <span className="mv2-artist">{c.artist}</span>
+                <span className="mv2-sep">·</span>
+                <span className="mv2-concept">Concept {c.concept}</span>
               </div>
-              <h3>Introduce Cortis to Australia by <span className="lime">embedding them inside existing cultural touchpoints</span> — not formal promotion.</h3>
-
-              <div className="exec-grid">
-                <div className="exec-item"><span className="h">Execution · 01</span><span className="t">Short-form cover or remix of a well-known Australian pop track (e.g. 5SOS "She Looks So Perfect").</span></div>
-                <div className="exec-item"><span className="h">Execution · 02</span><span className="t">Casual TikTok-style vlog at a recognisable Sydney location (e.g. Luna Park).</span></div>
-                <div className="exec-item"><span className="h">Execution · 03</span><span className="t">Reactive content using existing viral audio or local trends.</span></div>
-                <div className="exec-item"><span className="h">Execution · 04</span><span className="t">Collab-style TikToks with Australian artists or creators in natural, non-promotional settings.</span></div>
+              <h3 className="mock-v2-heading">{c.heading}</h3>
+              <div className="mock-v2-exec">
+                {c.exec.map((e, j) => (
+                  <div className="mv2-exec-item" key={j}>
+                    <span className="mv2-exec-h">{e.h}</span>
+                    <p className="mv2-exec-t">{e.t}</p>
+                  </div>
+                ))}
               </div>
-
-              <div className="why">
-                <span className="h">Why it works</span>
-                <span className="t">Uses familiarity to reduce the "foreign artist" barrier, makes discovery feel organic rather than planned, and builds early emotional recognition through culture — not marketing.</span>
+              <div className="mock-v2-why">
+                <span className="mv2-why-label">Why it works</span>
+                <p className="mv2-why-text">{c.why}</p>
               </div>
             </div>
           </article>
-
-          {/* MOCK 2 — JESSICA MAUBOY */}
-          <article className="mock-card reveal">
-            <div className="visual">
-              <span className="index">02</span>
-              <span className="tag">Album Rollout System</span>
-              <ImgSlot id="mockJessica" src="project/assets/jessica-mauboy.webp" placeholder="Jessica Mauboy" />
-            </div>
-            <div className="body">
-              <div className="meta-row">
-                <span>Jessica Mauboy</span>
-                <span className="sep"></span>
-                <span className="concept">Concept · "Private access as marketing"</span>
-              </div>
-              <h3>A rollout built around <span className="lime">controlled intimacy</span> and creator-led discovery.</h3>
-
-              <div className="exec-grid">
-                <div className="exec-item"><span className="h">Execution · 01</span><span className="t">Instagram Close Friends list used as a soft "inner circle" for early snippets.</span></div>
-                <div className="exec-item"><span className="h">Execution · 02</span><span className="t">Short voice memos or raw vocal previews released before any polished asset.</span></div>
-                <div className="exec-item"><span className="h">Execution · 03</span><span className="t">Fan accounts organically repost screen recordings and reactions, becoming distribution.</span></div>
-                <div className="exec-item"><span className="h">Execution · 04</span><span className="t">Selected creators receive minimal-branding physical PR — emotionally driven objects (phone charms, wearable pieces).</span></div>
-                <div className="exec-item" style={{gridColumn: 'span 2'}}><span className="h">Execution · 05</span><span className="t">Unboxing content becomes part of the rollout storytelling itself.</span></div>
-              </div>
-
-              <div className="why">
-                <span className="h">Why it works</span>
-                <span className="t">Feels exclusive without being inaccessible, encourages fan-led distribution (where leaks become intentional marketing moments), and turns physical PR into a content-creation trigger.</span>
-              </div>
-            </div>
-          </article>
-
-          {/* MOCK 3 — Fan Feedback Loop */}
-          <article className="mock-card reveal">
-            <div className="visual">
-              <span className="index">03</span>
-              <span className="tag">Real-time Adaptive Rollout</span>
-              <ImgSlot id="mockLoop" src="project/assets/mock-graph.webp" placeholder="Campaign graph" />
-            </div>
-            <div className="body">
-              <div className="meta-row">
-                <span>System</span>
-                <span className="sep"></span>
-                <span className="concept">Concept · "The fan feedback loop"</span>
-              </div>
-              <h3>A campaign that <span className="lime">listens before it scales</span> — fan behaviour shapes direction in real time.</h3>
-
-              <div className="stage-flow">
-                <div className="stage-card">
-                  <span className="n">STAGE 01</span>
-                  <span className="h">Multi-snippet seeding</span>
-                  <span className="t">Release 3–5 contrasting song snippets, each framed with different moods and visuals.</span>
-                </div>
-                <div className="stage-card">
-                  <span className="n">STAGE 02</span>
-                  <span className="h">Creator observation</span>
-                  <span className="t">Micro-creators get early access via Close Friends or private links. No briefing — only freedom to react.</span>
-                </div>
-                <div className="stage-card">
-                  <span className="n">STAGE 03</span>
-                  <span className="h">Behaviour tracking</span>
-                  <span className="t">Monitor audio usage, organic vs forced adoption, dominant emotional response, and the visual styles fans replicate.</span>
-                </div>
-                <div className="stage-card">
-                  <span className="n">STAGE 04</span>
-                  <span className="h">Adaptive rollout</span>
-                  <span className="t">Most-engaged snippet becomes lead single. Fan-made aesthetics inform official visual direction. Organic creator formats get scaled by label teams.</span>
-                </div>
-              </div>
-
-              <div className="why">
-                <span className="h">Why it works · core principle</span>
-                <span className="t" style={{fontFamily: 'var(--font-title)', fontSize: 17, fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--text-primary)'}}>
-                  Don't predict what will work. Watch what people <em style={{color: 'var(--gfc-lime)', fontStyle: 'italic', fontWeight: 500}}>already choose</em>, then scale it.
-                </span>
-              </div>
-            </div>
-          </article>
-
-        </div>
+        ))}
 
         {/* KPI */}
         <div className="kpi-block reveal">
           <div className="head">
             <div>
               <span className="section-eyebrow"><span className="square"></span>Measurement Framework</span>
-              <h3>The KPIs I'd actually watch.</h3>
+              <h3>KPIs that I would watch.</h3>
             </div>
             <p>Success isn't just reach — it's <em>repeated, voluntary participation</em> — across two signal layers.</p>
           </div>
@@ -3575,9 +3734,9 @@ function App() {
       <Marquee />
       <About />
       <VideoSpotlights />
+      <Trends />
       <Artists />
       <Cases />
-      <Trends />
       <Mocks />
       <Footer />
     </>
