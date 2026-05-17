@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="ext-resource-dependency" content="assets/boy-group.avif" data-resource-id="boyGroup" />
 <title>Mariam Kirakosyan — Artist Marketing, International and Social Media Strategy</title>
 <style>
 /* ============================================================
@@ -1723,6 +1724,9 @@ img, video { display: block; max-width: 100%; }
   line-height: 1.45;
 }
 
+.about-photo { width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+.about-photo image-slot { width: 100%; height: 100%; }
+
 /* KPI block */
 .kpi-block {
   margin-top: 32px;
@@ -1755,7 +1759,7 @@ img, video { display: block; max-width: 100%; }
 }
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 .kpi-col {
@@ -1793,89 +1797,6 @@ img, video { display: block; max-width: 100%; }
   left: 0; top: 8px;
   width: 8px; height: 1px;
   background: var(--gfc-lime);
-}
-
-/* ============================================================
-   CTA
-   ============================================================ */
-.cta-section { padding: 0 32px 80px; }
-.cta-card {
-  background: linear-gradient(135deg, #c5d83f 0%, #b4c736 50%, #a3b32f 100%);
-  border-radius: var(--radius-2xl);
-  padding: 80px 48px;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 48px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-card::before {
-  content: '';
-  position: absolute;
-  top: -100px; right: -100px;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.08);
-}
-.cta-card::after {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-.cta-card h2 {
-  font-family: var(--font-title);
-  color: #000;
-  font-size: clamp(36px, 4.5vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.0;
-  margin: 0;
-  text-wrap: balance;
-}
-.cta-card h2 em { font-style: italic; font-weight: 500; }
-.cta-card p {
-  color: rgba(0,0,0,0.7);
-  font-size: 15px;
-  margin: 16px 0 0;
-  max-width: 360px;
-}
-.cta-card .actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 1;
-}
-.cta-card .btn-dark-cta {
-  background: #121212;
-  color: var(--gfc-lime);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 18px 32px;
-  border-radius: var(--radius-full);
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: transform var(--dur-quick);
-}
-.cta-card .btn-dark-cta:hover { transform: scale(1.02); }
-.cta-card .btn-dark-cta .arrow {
-  width: 32px; height: 32px;
-  background: var(--gfc-lime);
-  color: #000;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  margin-left: 24px;
-}
-.cta-card .small-note {
-  font-size: 12px;
-  color: rgba(0,0,0,0.6);
-  font-weight: 600;
 }
 
 /* ============================================================
@@ -1945,7 +1866,6 @@ img, video { display: block; max-width: 100%; }
   .t-big { grid-column: span 2; grid-row: span 1; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-side { position: static; }
-  .cta-card { grid-template-columns: 1fr; padding: 56px 36px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .mock-card { grid-template-columns: 1fr; }
   .mock-card .visual { min-height: 320px; }
@@ -1957,7 +1877,7 @@ img, video { display: block; max-width: 100%; }
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .availability { display: none; }
-  .container, .section, .cta-section { padding-left: 20px; padding-right: 20px; }
+  .container, .section { padding-left: 20px; padding-right: 20px; }
   .hero { padding: 100px 20px 40px; }
   .section { padding-top: 80px; padding-bottom: 80px; }
   .hero-stats { grid-template-columns: 1fr; }
@@ -1971,7 +1891,6 @@ img, video { display: block; max-width: 100%; }
   .exec-grid { grid-template-columns: 1fr; }
   .stage-flow { grid-template-columns: 1fr; }
   .kpi-block { padding: 28px; }
-  .cta-card { padding: 36px 24px; }
   .mock-card .body { padding: 28px; }
 }
 </style>
@@ -2948,11 +2867,14 @@ function About() {
         <div className="about-grid">
           <aside className="about-side reveal">
             <div className="meta">— About</div>
-            <h2>An observer's <span className="lime">view of the room.</span></h2>
+            <h2>A music-obsessed girl <span className="lime">raised by playlists.</span></h2>
+            <div className="about-photo">
+              <ImgSlot id="mariamPhoto" placeholder="Drop in: your concert photo" shape="rounded" radius="12" />
+            </div>
             <p className="helper">
-              This portfolio is an exercise in pattern recognition — what makes one
-              international rollout land in Australia while another evaporates, and how
-              fandom, familiarity, and the digital playbook quietly do most of the work.
+              This portfolio is a collection of observations on international artist marketing,
+              fan behaviour, and digital culture — and a reflection of the career I hope to
+              build in global music marketing.
             </p>
             <div className="signature">
               <div className="avatar">MK</div>
@@ -2965,14 +2887,20 @@ function About() {
 
           <div className="about-copy reveal">
             <p>
-              I write about <em>international artist marketing</em> from the audience's side of
-              the table — paying close attention to how UMG artists are introduced, positioned,
-              and scaled, and what Australian listeners actually do with them once they arrive.
-              <span className="muted"> The work sits at the intersection of fan culture, streaming strategy, and the cultural reporting that runs alongside the algorithm.</span>
+              Hi, I'm <em>Mariam Kirakosyan</em> — a music-obsessed girl raised equally by playlists,
+              pop culture, and the internet.
+              <span className="muted"> As a borderline zillennial, I grew up watching music, technology,
+              and social media collide into an entirely new ecosystem.</span>
             </p>
             <p>
-              <span className="muted">Every observation in this portfolio returns to the same question: </span>
-              what makes a song, a moment, or an artist <em>travel?</em>
+              <span className="muted">I went from dancing around my room to Selena Gomez on a CD player,
+              to falling asleep with earphones in listening to Meet Me Halfway on my iPod Nano, to now
+              pre-saving albums before they've even been released.</span>
+            </p>
+            <p>
+              The rules of music discovery have changed quickly. Today, artists have opportunities
+              that never existed before — where <em>attention is currency</em> and fandom is built in
+              real time through culture, community, and participation.
             </p>
             <div className="pill-row">
               {[
@@ -2982,8 +2910,8 @@ function About() {
                 'Participation mechanics',
                 'Australian audience',
                 'Community design',
-                'Discovery feel',
                 'Moment design',
+                'Discovery feel',
               ].map((s) => (
                 <span key={s} className="skill">{s}</span>
               ))}
@@ -3006,7 +2934,7 @@ function Artists() {
     { cls: 'a-3', img: R('katseyeLuna', 'project/assets/katseye-luna-park.webp'),   name: 'KATSEYE',       label: 'Geffen · HYBE',    tag: 'K-Pop',    meta: 'Luna Park · Sydney' },
     { cls: 'a-4', img: R('cortisFashion', 'project/assets/cortis-fashion.webp'),    name: 'Cortis',        label: 'Geffen',           tag: 'K-Pop',    meta: 'Fashion, Fashion' },
     { cls: 'a-5', img: R('fiveSos', 'project/assets/5sos-album.jpg'),               name: '5 Seconds of Summer', label: 'Polydor',    tag: 'Pop-Rock', meta: 'Local familiarity bridge' },
-    { cls: 'a-6', slot: 'ruelSlot', name: 'Ruel',          label: 'RCA · Sony — case mock', tag: 'Pop',  meta: 'Drop your image here' },
+    { cls: 'a-6', img: R('boyGroup', 'project/assets/boy-group.avif'), name: 'Tomorrow X Together', label: 'BigHit · UMG', tag: 'K-Pop', meta: 'Global fanbase bridge' },
   ];
   return (
     <section className="section" id="artists" ref={ref}>
@@ -3022,11 +2950,7 @@ function Artists() {
         <div className="artists-grid reveal">
           {list.map((a) => (
             <div key={a.name} className={`artist-card ${a.cls}`}>
-              {a.slot ? (
-                <ImgSlot id={a.slot} placeholder="Drop in: Ruel reference image" />
-              ) : (
-                <img src={a.img} alt={a.name} />
-              )}
+              <img src={a.img} alt={a.name} />
               <div className="overlay">
                 <div className="label">{a.label}</div>
                 <h3>{a.name}</h3>
@@ -3074,13 +2998,13 @@ function Cases() {
       meta: ['KATSEYE', 'Geffen · HYBE', 'Sydney 2025'],
       title: 'Cultural framing through place — how Luna Park did the introduction for ',
       titleAccent: 'KATSEYE.',
-      blurb: "Luna Park isn't just a venue — it's a cultural landmark embedded in Sydney nostalgia. By positioning KATSEYE inside that space, the activation grounded the group in local cultural memory before a single track had to do explanatory work. Fans travelled interstate for a short Q&A; the collaboration with Cat & Calmell created a familiarity bridge through association, not explanation.",
+      blurb: "Luna Park is not just a venue — it's a cultural landmark embedded in Sydney nostalgia. By positioning KATSEYE within this space, the activation immediately grounded the group in local cultural memory, turned the event into shareable visual storytelling, and reduced the need for introductory marketing. Fans travelled interstate for a short-format Q&A, fostering a pilgrimage-style experience. Collaboration with Cat & Calmell created two-way cultural validation through association rather than explanation.",
       stats: [
         { v: 6, l: 'APAC territories activated', suffix: '' },
         { v: 1, l: 'Cultural landmark used as the anchor', suffix: '' },
         { v: 2, l: 'Local artist bridges (Cat & Calmell)', suffix: '' },
       ],
-      principle: 'Successful market entry embeds artists into environments audiences already trust.',
+      principle: 'Successful market entry is about embedding artists into environments audiences already trust.',
     },
     {
       r: r2, inv: inv2,
@@ -3247,7 +3171,7 @@ function Trends() {
         {/* dashboard */}
         <div className="trends-grid reveal" ref={iv}>
           <div className="trend-card t-big">
-            <div className="kicker">— The Snippet Economy</div>
+            <div className="kicker">— How Songs Travel 2024–2026</div>
             <h3>The 14-second chorus is now <span className="lime">the entire campaign.</span></h3>
             <p className="blurb">
               The audio snippet — not the full track, not the music video — is the single
@@ -3327,12 +3251,12 @@ function Trends() {
 
           <div className="trend-card">
             <div className="kicker">— What I'm watching</div>
-            <h4>Three signals for the next twelve months.</h4>
+            <h4>Three participation formats driving the most organic spread.</h4>
             <ul style={{padding: 0, listStyle: 'none', margin: '16px 0 0', display: 'flex', flexDirection: 'column', gap: 12}}>
               {[
-                { n: '01', t: 'Producer-led TikTok accounts overtaking artist accounts on snippet seeding.' },
-                { n: '02', t: 'K-pop debut groups skipping the title-track strategy entirely.' },
-                { n: '03', t: 'Spanish-language remixes as the new "feature track" economy.' },
+                { n: '01', t: 'Humour-driven: meme and "inside joke" content where each creator adapts an existing format — shouting relatable lyrics, acting out scenes, "I\'m passing the phone to someone who…"' },
+                { n: '02', t: 'Fashion/lifestyle-driven: outfit-of-the-day and day-in-the-life content layered with a song as a cultural soundtrack.' },
+                { n: '03', t: 'Nostalgia-driven: memory-based participation drives re-engagement — "2026 is the new 2016" with Tumblr-era visuals and Blue Neighbourhood as the sound.' },
               ].map((it) => (
                 <li key={it.n} style={{display: 'flex', gap: 14, alignItems: 'flex-start'}}>
                   <span style={{fontFamily: 'var(--font-title)', fontSize: 14, fontWeight: 800, color: 'var(--gfc-lime)', minWidth: 24}}>{it.n}</span>
@@ -3457,16 +3381,16 @@ function Mocks() {
             </div>
           </article>
 
-          {/* MOCK 2 — RUEL */}
+          {/* MOCK 2 — JESSICA MAUBOY */}
           <article className="mock-card reveal">
             <div className="visual">
               <span className="index">02</span>
               <span className="tag">Album Rollout System</span>
-              <ImgSlot id="mockRuel" placeholder="Drop in: Ruel visual, PR object reference, or intimate-photo mood" />
+              <ImgSlot id="mockJessica" placeholder="Drop in: Jessica Mauboy visual" />
             </div>
             <div className="body">
               <div className="meta-row">
-                <span>Ruel</span>
+                <span>Jessica Mauboy</span>
                 <span className="sep"></span>
                 <span className="concept">Concept · "Private access as marketing"</span>
               </div>
@@ -3543,7 +3467,7 @@ function Mocks() {
               <span className="section-eyebrow"><span className="square"></span>Measurement Framework</span>
               <h3>The KPIs I'd actually watch.</h3>
             </div>
-            <p>Success isn't reach — it's <em>repeated, voluntary participation</em> — across three signal layers.</p>
+            <p>Success isn't just reach — it's <em>repeated, voluntary participation</em> — across two signal layers.</p>
           </div>
           <div className="kpi-grid">
             <div className="kpi-col">
@@ -3556,19 +3480,10 @@ function Mocks() {
               </ul>
             </div>
             <div className="kpi-col">
-              <span className="h">Community signals</span>
-              <ul>
-                <li>Growth in fan account activity.</li>
-                <li>UGC volume using unofficial snippets.</li>
-                <li>Close Friends / private content engagement rate.</li>
-                <li>Discord / community platform interaction levels.</li>
-              </ul>
-            </div>
-            <div className="kpi-col">
               <span className="h">Conversion signals</span>
               <ul>
                 <li>Pre-save conversion from TikTok exposure.</li>
-                <li>Spike timing correlation between trend and streaming lift.</li>
+                <li>Creator analytics and spike timing correlation between trend and streaming lift.</li>
                 <li>Repeat audio usage across multiple creators.</li>
                 <li>Editorial DSP adds following organic momentum.</li>
               </ul>
@@ -3581,32 +3496,8 @@ function Mocks() {
 }
 
 /* ============================================================
-   CTA + Footer
+   Footer
    ============================================================ */
-function CTA() {
-  return (
-    <section className="cta-section">
-      <div className="container">
-        <div className="cta-card">
-          <div>
-            <h2>Working on something <em>international?</em> Let's compare notes.</h2>
-            <p>Open to roles, contracts, and conversations across artist marketing, social strategy, and cultural research.</p>
-          </div>
-          <div className="actions">
-            <button className="btn-dark-cta">
-              <span>Start a conversation</span>
-              <span className="arrow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-              </span>
-            </button>
-            <span className="small-note">— Replies within 48 hours · Sydney</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Footer() {
   return (
     <footer className="footer">
@@ -3674,7 +3565,6 @@ function App() {
       <Cases />
       <Trends />
       <Mocks />
-      <CTA />
       <Footer />
     </>
   );
