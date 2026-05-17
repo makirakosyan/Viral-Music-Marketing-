@@ -1724,8 +1724,9 @@ img, video { display: block; max-width: 100%; }
   line-height: 1.45;
 }
 
-.about-photo { width: 100%; height: 280px; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
-.about-photo image-slot { width: 100%; height: 100%; }
+.about-photo { width: 100%; height: 320px; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform 1.2s var(--ease-out); }
+.about-photo:hover img { transform: scale(1.04); }
 
 /* KPI block */
 .kpi-block {
@@ -2869,7 +2870,7 @@ function About() {
             <div className="meta">— About</div>
             <h2>A music-obsessed girl <span className="lime">raised by playlists.</span></h2>
             <div className="about-photo">
-              <ImgSlot id="mariamPhoto" placeholder="Drop in: your concert photo" shape="rounded" radius="12" />
+              <img src="project/assets/mariam-photo.webp" alt="Mariam Kirakosyan at a concert" />
             </div>
             <p className="helper">
               This portfolio is a collection of observations on international artist marketing,
